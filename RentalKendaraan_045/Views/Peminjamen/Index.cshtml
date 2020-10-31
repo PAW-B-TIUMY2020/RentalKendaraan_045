@@ -40,13 +40,13 @@
                 @Html.DisplayFor(modelItem => item.Biaya)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdCostumerNavigation.IdCustomer)
+                @Html.DisplayFor(modelItem => item.IdCostumerNavigation.NamaCustomer)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdJaminanNavigation.IdJaminan)
+                @Html.DisplayFor(modelItem => item.IdJaminanNavigation.NamaJaminan)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.IdKendaraan)
+                @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.NamaKendaraan)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdPeminjaman">
