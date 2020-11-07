@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace RentalKendaraan_045.Models
 {
@@ -13,22 +14,30 @@ namespace RentalKendaraan_045.Models
 
 
         [DisplayName("ID")]
+        [Required(ErrorMessage = "ID Peminjaman wajib diisi!")]
         public int IdPeminjaman { get; set; }
+        [Required(ErrorMessage = "Tanggal Peminjaman wajib diisi!")]
         [DisplayName("Tanggal Peminjaman")]
         public DateTime? TglPeminjaman { get; set; }
+        [Required(ErrorMessage = "Kendaraan wajib diisi!")]
         [DisplayName("Kendaraan")]
         public int? IdKendaraan { get; set; }
+        [Required(ErrorMessage = "Customer wajib diisi!")]
         [DisplayName("Customer")]
         public int? IdCostumer { get; set; }
+        [Required(ErrorMessage = "Jaminan wajib diisi!")]
         [DisplayName("Jaminan")]
         public int? IdJaminan { get; set; }
-
+        [Required(ErrorMessage = "Biaya wajib diisi!")]
         public int? Biaya { get; set; }
         [DisplayName("Customer")]
+        [Required(ErrorMessage = "Customes wajib diisi!")]
         public Customer IdCostumerNavigation { get; set; }
         [DisplayName("Jaminan")]
+        [Required(ErrorMessage = "jamninan wajib diisi!")]
         public Jaminan IdJaminanNavigation { get; set; }
         [DisplayName("Kendaraan")]
+        [Required(ErrorMessage = "Kendaraan wajib diisi!")]
         public Kendaraan IdKendaraanNavigation { get; set; }
 
         public ICollection<Pengembalian> Pengembalian { get; set; }
