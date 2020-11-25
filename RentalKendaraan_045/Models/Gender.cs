@@ -10,7 +10,7 @@ namespace RentalKendaraan_045.Models
         {
             Customer = new HashSet<Customer>();
         }
-        [Required(ErrorMessage = "Id gender wajib diisi!")]
+
         public int IdGender { get; set; }
         [Required(ErrorMessage = "Data Gender wajib diisi!")]
         public string NamaGender { get; set; }
