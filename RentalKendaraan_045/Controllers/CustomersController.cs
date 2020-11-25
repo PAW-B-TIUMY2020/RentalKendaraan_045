@@ -40,7 +40,7 @@ namespace RentalKendaraan_045.Controllers
             //untuk memilih dropdownlist ketersediaan
             if (!string.IsNullOrEmpty(ktsd))
             {
-                menu = menu.Where(x => x.IdGender.ToString() == ktsd);
+                menu = menu.Where(x => x.IdGenderNavigation.NamaGender == ktsd);
             }
 
             //untuk search data
