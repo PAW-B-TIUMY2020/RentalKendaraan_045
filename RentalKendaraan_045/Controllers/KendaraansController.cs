@@ -19,7 +19,7 @@ namespace RentalKendaraan_045.Controllers
         }
 
         // GET: Kendaraans
-        public async Task<IActionResult> Index(string ktsd, string searchString)
+        public async Task<IActionResult> Index(string ktsd, string searchString, string sortOrder, string currentFilter, int? pageNumber)
         {
             //buat list menyimpan ketersediaan
             var ktsdList = new List<string>();
@@ -49,7 +49,44 @@ namespace RentalKendaraan_045.Controllers
                 menu = menu.Where(s => s.NoPolisi.Contains(searchString) || s.NamaKendaraan.Contains(searchString)
                 || s.NoStnk.Contains(searchString));
             }
-            return View(await menu.ToListAsync());
+
+            //untuk sorting
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    menu = menu.OrderByDescending(s => s.NamaKendaraan);
+                    break;
+                case "Date":
+                    menu = menu.OrderBy(s => s.Ketersediaan);
+                    break;
+                case "date_desc":
+                    menu = menu.OrderByDescending(s => s.Ketersediaan);
+                    break;
+                default:
+                    menu = menu.OrderBy(s => s.NamaKendaraan);
+                    break;
+            }
+
+            ViewData["CurrentSort"] = sortOrder;
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            /*return View(await menu.ToListAsync());*/
+            //definisi jumlah data pada halaman
+            int pageSize = 5;
+
+            return View(await PaginatedList<Kendaraan>.CreateAsync(menu.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Kendaraans/Details/5
