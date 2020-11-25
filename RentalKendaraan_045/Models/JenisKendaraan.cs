@@ -10,7 +10,7 @@ namespace RentalKendaraan_045.Models
         {
             Kendaraan = new HashSet<Kendaraan>();
         }
-        [Required(ErrorMessage = "Id jenis kendaraan wajib diisi!")]
+
         public int IdJenisKendaraan { get; set; }
         [Required(ErrorMessage = "jenis kendaraan wajib diisi!")]
         public string NamaJenisKendaraan { get; set; }
