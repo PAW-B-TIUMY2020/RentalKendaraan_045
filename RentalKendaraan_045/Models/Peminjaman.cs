@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace RentalKendaraan_045.Models
 {
@@ -29,6 +30,7 @@ namespace RentalKendaraan_045.Models
         [DisplayName("Jaminan")]
         public int? IdJaminan { get; set; }
         [Required(ErrorMessage = "Biaya wajib diisi!")]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Hanya boleh diisi dengan angka")]
         public int? Biaya { get; set; }
         [DisplayName("Customer")]
         [Required(ErrorMessage = "Customes wajib diisi!")]
