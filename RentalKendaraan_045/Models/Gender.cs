@@ -16,5 +16,6 @@ namespace RentalKendaraan_045.Models
         public string NamaGender { get; set; }
 
         public ICollection<Customer> Customer { get; set; }
+
     }
 }
